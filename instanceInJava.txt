@@ -1,0 +1,184 @@
+﻿ @ Biến và hàm instance là :
+
+> Khai báo trong class;
+
+> Chỉ được sử dụng khi TẠO ĐỐI TƯỢNG MỚI VỚI KIỂU DỮ LIỆU CỦA CLASS CHỨA NÓ !!;
+
+> Không có từ khóa " static ";
+
+* (các biến instance chỉ được khai báo DƯỚI class)
+ 
+Ví Dụ:
+
+===
+class viDu{
+
+String name; // biến instance có kiểu dữ liệu là String.
+
+int age; // biến instance có kiểu dữ liệu là int.
+
+public void setName(String name){
+
+     this.name = name;
+
+  }// ví dụ về hàm instance 
+
+public void setAge(String age){
+
+     this.age = age;
+
+  }
+
+}
+
+===
+
+@ constuctor là :
+
+>Dùng để khởi tạo giá trị trị mặc định cho biến instance.
+
+>Tên constructor là tên class;
+
+>Không có giá trị trả về;
+
+>Có thể có nhiều constructor trong một class( overloading [nạp chồng phương thức])
+
+Ví Dụ :
+===
+
+class viDu{
+String name; 
+
+int age; 
+
+//constructor 
+public viDu(String name, int age){
+
+this.setName(name);
+
+this.setAge(age);
+
+}
+
+//constructor
+
+public void setName(String name){
+
+     this.name = name;
+
+  }
+
+public void setAge(String age){
+
+     this.age = age;
+
+  }
+
+}
+===
+
+*(khai báo ở GIỮA biến và hàm instance)
+
+
+@ Biến và hàm static/class là :
+
+> Có chứa từ khóa static;
+
+> Được dùng chung cho mọi đối tượng mà không cần tạo đối tượng mới;
+
+Ví Dụ :
+===
+class viDu{
+
+static String name;
+
+static int age;
+
+}
+
+class viDu2{
+viDu.name = "Hải";
+
+viDu.age = 19;
+
+}
+
+===
+
+@ Biến local là :
+
+> Được khai báo trong biến hoặc constructor, ...;
+
+> Chỉ sống được đến khi hàm,constructor, ... chứa nó kết thúc ;
+
+@ Interface :
+
+			public		protected	default 	private
+[cùng class		v		v		v		v
+[cùng package		v		v		v		x
+[subclass cùng package	v		v		v		x
+[subclass khác package	v		v(through IHRT)	x		x
+[class khác package	v		x		x		x
+
+IHRT : inheritance;
+
+@ Bộ nhớ STACK và HEAP :
+
+> Bộ nhớ STACK chỉ lưu trữ các biến cục bộ(biến  local), các lời gọi hàm, các biến tham chiếu;
+
+> Bộ nhớ HEAP chỉ dùng để lưu trữ các đối tượng; 
+
+... Còn nhiều chổ chưa hiểu;
+
+@ Ví dụ mảng hướng đối tượng :
+
+======
+package baiTap;
+
+import java.util.Scanner;
+
+public class main {
+
+    public static void main(String[] args) {
+
+        staff[] staffs = new staff[3];
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("vui lòng nhập vào giá trị");
+
+        for(int i = 0; i < staffs.length; i++ ){
+
+            System.out.println("vui lòng nhập thông tin nhan viên thứ "+ (i + 1));
+
+            System.out.println("tên");
+
+            String name = sc.nextLine();
+
+            System.out.println("địa chỉ");
+
+            String local = sc.nextLine();
+
+            System.out.println("tuổi");
+
+            int age = sc.nextInt();
+
+            staffs[i] = new staff(name, local, age);
+
+            sc.nextLine();
+
+        }
+        int i = 1;
+
+        for (staff st: staffs){
+
+            System.out.println("Nhân Viên thứ " + i + "\n tên : " + st.getName() +"\n địa chỉ : " + st.getLocal() +"\n tuổi : " + st.getAge());
+
+            i++;
+
+        }
+
+    }
+
+}
+==========
